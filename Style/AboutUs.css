@@ -1,0 +1,608 @@
+/*
+==================================================
+RAKETA TENNIS CLUB - COMPLETE STYLESHEET
+==================================================
+*/
+
+/* --- 0. Global Reset and Variables --- */
+:root {
+    --color-primary: #1C3A33; /* Dark Green */
+    --color-secondary: #E3D4A8; /* Light Gold/Tan */
+    --color-accent: #E1C16B; /* Brighter Gold for buttons */
+    --color-light: #FFFFFF;
+    --color-dark: #333333;
+
+    --font-sans: 'Arial', sans-serif; 
+    --max-width: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    /* Flex properties to ensure footer sticks to the bottom of content */
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 40px 0;
+}
+
+
+/* --- 1. Buttons and General Elements --- */
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #D3B160;
+}
+
+.section-heading {
+    font-size: 2em;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+/* --- 2. Top Bar --- */
+.top-bar {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 0.85em;
+    padding: 8px 0;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.top-link {
+    white-space: nowrap;
+}
+
+/* --- 3. Header & Navigation (CSS Only Responsive) --- */
+.main-header {
+    background-color: var(--color-primary);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+}
+
+/* 3.1 Mobile Controls */
+/* Hide the actual checkbox input */
+#nav-check {
+    display: none;
+}
+
+/* Hamburger Icon Styling (Mobile Only) */
+.nav-toggle {
+    background: none;
+    border: none;
+    color: var(--color-light);
+    font-size: 1.5em;
+    cursor: pointer;
+    display: block; /* Show on mobile */
+    order: 2;
+}
+
+/* 3.2 Mobile Navigation Menu */
+.main-nav {
+    /* Mobile Default State: Hidden and takes up full width */
+    position: absolute;
+    top: 80px; 
+    left: 0;
+    width: 100%;
+    background-color: var(--color-primary);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    order: 3;
+}
+
+/* CSS-ONLY TOGGLE: Show the menu when the checkbox is checked */
+#nav-check:checked ~ .main-nav {
+    max-height: 300px; /* Open the menu */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column; 
+    list-style: none;
+    gap: 0;
+    padding: 10px 20px;
+}
+
+.nav-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-list li:last-child {
+    border-bottom: none;
+}
+
+.nav-link {
+    color: var(--color-light);
+    font-weight: 500;
+    padding: 15px 0;
+    display: block; 
+    border-bottom: none; 
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: transparent;
+}
+
+
+/* --- 4. Hero Section (Homepage) --- */
+.hero-section {
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    /* Flex-grow allows it to fill the vertical space above the footer */
+    flex-grow: 1; 
+    min-height: 60vh;
+    position: relative;
+    color: var(--color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    padding: 20px;
+}
+
+.hero-badge {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+
+/* --- 5. Footer --- */
+.main-footer {
+    background-color: var(--color-primary);
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85em;
+    flex-shrink: 0; /* Prevents footer from shrinking */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    color: var(--color-secondary);
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+/* --- 6. About Us Page Title Hero --- */
+.page-title-hero {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.page-title-hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+
+.page-title-hero p {
+    font-size: 1.1em;
+    color: var(--color-secondary);
+}
+
+/* Main Content Area */
+.about-content {
+    padding: 60px 20px;
+    background-color: var(--color-light);
+}
+
+.content-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 7. What's New Section --- */
+.whats-new-section {
+    padding-bottom: 20px;
+}
+
+.update-grid {
+    display: flex;
+    flex-direction: column; /* Stacked on mobile */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.update-card {
+    background-color: var(--color-light);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.update-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.update-info {
+    padding: 15px;
+}
+
+.update-info h3 {
+    color: var(--color-primary);
+    margin-bottom: 5px;
+    font-size: 1.3em;
+}
+
+.update-date {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-accent);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.read-more:hover {
+    color: var(--color-primary);
+}
+
+.archive-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.archive-link a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* --- 8. Core Identity Section (What Raketa Is About) --- */
+.identity-section {
+    padding: 20px 0;
+}
+
+.identity-grid {
+    display: flex;
+    flex-direction: column; /* Stacked on mobile */
+    gap: 30px;
+    align-items: center;
+}
+
+.identity-text {
+    flex: 1;
+}
+
+.identity-quote {
+    font-style: italic;
+    margin-top: 20px;
+    padding: 15px;
+    border-left: 5px solid var(--color-accent);
+    background-color: #f9f9f9;
+}
+
+.identity-image {
+    flex: 1;
+    max-width: 100%;
+}
+
+/* --- 9. Benefits Section (Why They Should Join) --- */
+.benefits-section {
+    padding: 20px 0 60px 0;
+    text-align: center;
+}
+
+.benefits-grid {
+    display: flex;
+    flex-direction: column; /* Stacked on mobile */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.benefits-point {
+    padding: 20px;
+    background-color: var(--color-primary); /* Dark Green Background */
+    color: var(--color-light);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.benefit-icon {
+    font-size: 2.5em;
+    color: var(--color-accent); /* Gold icon */
+    margin-bottom: 10px;
+    display: block;
+}
+
+.benefits-point h3 {
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+}
+
+.benefits-point p {
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.benefits-cta {
+    text-align: center;
+}
+
+/* 9.1 Video Explainer Styles */
+.video-explainer-container {
+    text-align: center;
+    margin: 60px auto 40px auto;
+    max-width: 800px;
+}
+
+.video-explainer-container h3 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background-color: var(--color-dark);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.video-link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-light);
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.video-link-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.video-play-icon {
+    font-size: 4em;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+.video-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.video-channel {
+    font-size: 0.9em;
+    color: var(--color-secondary);
+}
+
+
+/* ==================================================
+    MEDIA QUERIES (Desktop Styles)
+================================================== */
+
+@media (min-width: 768px) {
+    
+    /* Header: Desktop State */
+    .nav-toggle {
+        display: none; 
+    }
+    
+    #nav-check {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        width: auto;
+        order: initial;
+    }
+    
+    .nav-list {
+        flex-direction: row; 
+        gap: 25px;
+        padding: 0;
+    }
+    
+    .nav-list li {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        padding: 5px 0;
+        border-bottom: 2px solid transparent; 
+        background-color: transparent;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        border-bottom-color: var(--color-accent);
+        background-color: transparent;
+    }
+
+    /* Hero */
+    .hero-section {
+        min-height: 70vh;
+    }
+    .hero-title {
+        font-size: 3.5em;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer-nav {
+        justify-content: flex-end;
+    }
+    
+    /* About Us Page Layout */
+    .page-title-hero {
+        padding: 80px 20px;
+    }
+    
+    .page-title-hero h1 {
+        font-size: 3.5em;
+    }
+
+    .section-heading {
+        text-align: left;
+    }
+
+    /* What's New Grid */
+    .update-grid {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .update-card {
+        width: calc(33.333% - 20px);
+    }
+
+    /* Identity Grid (Text on left, Image on right) */
+    .identity-grid {
+        flex-direction: row; 
+        text-align: left;
+    }
+    
+    .identity-image {
+        max-width: 45%;
+    }
+
+    .identity-text {
+        max-width: 50%;
+    }
+    
+    /* Benefits Grid (Two columns on tablet) */
+    .benefits-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .benefits-point {
+        width: calc(50% - 15px); 
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Benefits Grid (Four columns on desktop) */
+    .benefits-point {
+        width: calc(25% - 22px); 
+    }
+}
